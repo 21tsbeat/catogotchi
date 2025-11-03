@@ -11,6 +11,7 @@
 <body>
 
     <div id="game-container">
+        <!-- Фон -->
         <img id="background-img" src="assets/ui/background.png" alt="background">
 
         <!-- Кот -->
@@ -19,51 +20,51 @@
         <!-- Имя питомца -->
         <div id="name-bar">
             <img src="assets/ui/name_bar.png" alt="name_bar">
-            <span id="pet-name">Мурчик</span>
+            <span id="pet-name">МУРЧИК</span>
         </div>
         
         <!-- Статусы -->
         <div class="stat" id="hunger-stat">
             <img class="icon" src="assets/ui/hunger_icon.png" alt="hunger">
             <div class="bar-empty">
-                <div class="bar-fill" id="hunger-fill"></div>
+                <div class="bar-fill" id="hunger-fill" style="--fill:70"></div>
             </div>
         </div>
         
         <div class="stat" id="happiness-stat">
             <img class="icon" src="assets/ui/happiness_icon.png" alt="happiness">
             <div class="bar-empty">
-                <div class="bar-fill" id="happiness-fill"></div>
+                <div class="bar-fill" id="happiness-fill" style="--fill:80"></div>
             </div>
         </div>
         
         <div class="stat" id="energy-stat">
             <img class="icon" src="assets/ui/energy_icon.png" alt="energy">
             <div class="bar-empty">
-                <div class="bar-fill" id="energy-fill"></div>
+                <div class="bar-fill" id="energy-fill" style="--fill:60"></div>
             </div>
         </div>
         
         <div class="stat" id="cleanliness-stat">
             <img class="icon" src="assets/ui/cleanliness_icon.png" alt="cleanliness">
             <div class="bar-empty">
-                <div class="bar-fill" id="cleanliness-fill"></div>
+                <div class="bar-fill" id="cleanliness-fill" style="--fill:90"></div>
             </div>
         </div>
 
         <!-- Кнопки -->
         <div id="buttons">
-            <img src="assets/ui/button_feed.png" onclick="doAction('feed')">
-            <img src="assets/ui/button_play.png" onclick="doAction('play')">
-            <img src="assets/ui/button_sleep.png" onclick="doAction('sleep')">
-            <img src="assets/ui/button_clear.png" onclick="doAction('clear')">
-            <img src="assets/ui/button_name.png" onclick="editName()">
-            <img src="assets/ui/button_restart.png" onclick="restart()">
+            <img src="assets/ui/button_feed.png" data-action="feed" onclick="doAction('feed')">
+            <img src="assets/ui/button_play.png" data-action="play" onclick="doAction('play')">
+            <img src="assets/ui/button_sleep.png" data-action="sleep" onclick="doAction('sleep')">
+            <img src="assets/ui/button_clear.png" data-action="clear" onclick="doAction('clear')">
+            <img src="assets/ui/button_name.png" data-action="name" onclick="editName()">
+            <img src="assets/ui/button_restart.png" data-action="restart" onclick="restart()">
         </div>
 
     </div>
 
-    <!-- Музыка -->
+    <!-- Фоновая музыка -->
     <audio id="bg-music" src="assets/sounds/background_music.mp3" loop autoplay></audio>
 
     <script src="app.js"></script>
