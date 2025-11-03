@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 390px;
+    height: 844px;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#cat {
+    position: absolute;
+    top: 174px;
+    left: -17px;
+    width: auto;
+    height: auto;
+}
+
+#name-bar {
+    position: absolute;
+    top: 564px;
+    left: 70px;
+    width: 200px;
+    height: 40px;
+    background: url('assets/ui/name_bar.png') no-repeat;
+}
+
+#pet-name {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #282828;
+    font-size: 22px;
+}
+
+#cursor {
+    position: absolute;
+    top: 10px;
+    left: calc(20px + var(--name-width));
+    color: #282828;
+}
+
+.stat {
+    position: absolute;
+}
+
+.stat .icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+
+.bar-empty {
+    position: absolute;
+    width: 200px;
+    height: 10px;
+    background: url('assets/ui/bar_empty.png') no-repeat;
+}
+
+.bar-fill {
+    width: 0%;
+    height: 10px;
+    background: url('assets/ui/bar_fill.png') no-repeat;
+}
+
+#buttons img {
+    position: absolute;
+}
