@@ -81,6 +81,7 @@ body {
     width: 29px;
     height: 24px;
     left: 2%;
+    top: 40%;
 }
 
 #happiness-stat .icon {
@@ -151,6 +152,7 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 27px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 208px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 208px; } /* restart */
+
 
 
 
