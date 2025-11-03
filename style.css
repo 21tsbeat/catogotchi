@@ -145,12 +145,13 @@ body {
     cursor: pointer;
     z-index: 2;
 }
-#buttons img:nth-child(1) { top: 632px; left: 23px; }  /* feed */
-#buttons img:nth-child(2) { top: 632px; left: 201px; } /* play */
-#buttons img:nth-child(3) { top: 694px; left: 23px; }  /* sleep */
-#buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
-#buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
-#buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
+#buttons img:nth-child(1) { top: 632px; left: 25px; }  /* feed */
+#buttons img:nth-child(2) { top: 632px; left: 206px; } /* play */
+#buttons img:nth-child(3) { top: 694px; left: 25px; }  /* sleep */
+#buttons img:nth-child(4) { top: 754px; left: 25px; }  /* clear */
+#buttons img:nth-child(5) { top: 694px; left: 206px; } /* name */
+#buttons img:nth-child(6) { top: 754px; left: 206px; } /* restart */
+
 
 
 
