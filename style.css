@@ -30,8 +30,8 @@ body {
 /* Имя питомца */
 #name-bar {
     position: absolute;
-    top: 580px;
-    left: 90px;
+    top: 575px;
+    left: 95px;
     width: 200px;
     height: 40px;
     z-index: 3;
@@ -157,6 +157,7 @@ body {
 }
 
 /* restart */
+
 
 
 
