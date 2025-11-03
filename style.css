@@ -82,11 +82,10 @@ body {
     top: 9px;
     left: 32px;
     width: 190px;
-    height: 14px;
-    background-image: url('assets/ui/bar_empty.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%; /* Точное совпадение по размерам */
-    border-radius: 4px;
+    height: 16px; /* немного увеличим, чтобы не было обрезки */
+    background: url('assets/ui/bar_empty.png') no-repeat center;
+    background-size: cover; /* идеально растягивает по высоте */
+    border-radius: 6px;
     overflow: hidden;
 }
 
@@ -94,14 +93,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* совпадает по ширине с .bar-empty */
+    width: 100%;
     height: 100%;
-    background-image: url('assets/ui/bar_fill.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%; /* совпадает пиксель-в-пиксель */
+    background: url('assets/ui/bar_fill.png') no-repeat center;
+    background-size: cover; /* теперь совпадает точно */
+    border-radius: 6px;
     transform-origin: left center;
-    scale: var(--fill, 0.5); /* можно задавать динамически от JS */
-    transition: scale 0.3s linear;
+    transform: scaleX(var(--fill, 0.5)); /* ширина регулируется */
+    transition: transform 0.3s ease;
 }
 
 /* Точные вертикальные позиции со сжатыми отступами */
@@ -126,6 +125,7 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
+
 
 
 
