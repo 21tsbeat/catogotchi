@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-container {
+    width: 390px;
+    height: 844px;
+    position: relative;
+    overflow: hidden;
+    background: url('assets/ui/background.png') no-repeat;
+    background-size: cover;
+}
+
+/* Кот */
+#cat {
+    position: absolute;
+    top: 174px;
+    left: -17px;
+    width: auto;
+    height: auto;
+    z-index: 2;
+}
+
+/* Имя питомца */
+#name-bar {
+    position: absolute;
+    top: 564px;
+    left: 70px;
+    width: 200px;
+    height: 40px;
+    background: url('assets/ui/name_bar.png') no-repeat;
+    z-index: 3;
+}
+
+#pet-name {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 22px;
+    color: #282828;
+}
+
+/* Статусы */
+.stat {
+    position: absolute;
+}
+
+.stat .icon {
+    width: 30px;
+    height: 30px;
+}
+
+.bar-empty {
+    width: 200px;
+    height: 10px;
+    background: url('assets/ui/bar_empty.png') no-repeat;
+    position: relative;
+}
+
+.bar-fill {
+    height: 10px;
+    width: 0%;
+    background: url('assets/ui/bar_fill.png') no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Позиции статов */
+#hunger-stat {
+    top: 98px;
+    left: 33px;
+    z-index: 3;
+}
+
+#happiness-stat {
+    top: 48px;
+    left: 33px;
+    z-index: 3;
+}
+
+#energy-stat {
+    top: 125px;
+    left: 33px;
+    z-index: 3;
+}
+
+#cleanliness-stat {
+    top: 73px;
+    left: 33px;
+    z-index: 3;
+}
+
+/* Кнопки */
+#buttons img {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+}
+
+#buttons img:nth-child(1) {
+    top: 632px;
+    left: 23px;
+}
+
+/* feed */
+#buttons img:nth-child(2) {
+    top: 632px;
+    left: 201px;
+}
+
+/* play */
+#buttons img:nth-child(3) {
+    top: 694px;
+    left: 23px;
+}
+
+/* sleep */
+#buttons img:nth-child(4) {
+    top: 754px;
+    left: 23px;
+}
+
+/* clear */
+#buttons img:nth-child(5) {
+    top: 694px;
+    left: 201px;
+}
+
+/* name */
+#buttons img:nth-child(6) {
+    top: 754px;
+    left: 201px;
+}
+
+/* restart */
