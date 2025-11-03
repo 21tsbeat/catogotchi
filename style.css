@@ -133,10 +133,10 @@ body {
 }
 
 /* === Точные вертикальные позиции (скорректированные) === */
-#hunger-stat { top: 60px; left: 10px; }
-#happiness-stat { top: 85px; left: 10px; }
-#energy-stat { top: 110px; left: 10px; }
-#cleanliness-stat { top: 135px; left: 10px; }
+#hunger-stat { top: 90px; left: 10px; }
+#happiness-stat { top: 115px; left: 10px; }
+#energy-stat { top: 140px; left: 10px; }
+#cleanliness-stat { top: 165px; left: 10px; }
 
 /* === Кнопки === */
 #buttons img {
@@ -152,6 +152,7 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 27px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 208px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 208px; } /* restart */
+
 
 
 
