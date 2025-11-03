@@ -43,12 +43,32 @@ body {
     display: block;
 }
 
+#name-bar {
+    position: absolute;
+    top: 564px;
+    left: 70px;
+    width: 200px;  /* ширина name_bar */
+    height: 40px;  /* высота name_bar */
+    z-index: 3;
+}
+
+#name-bar img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Имя питомца по центру */
 #pet-name {
     position: absolute;
-    top: 10px;
-    left: 20px;
+    top: 50%;           /* центр по вертикали */
+    left: 50%;          /* центр по горизонтали */
+    transform: translate(-50%, -50%); /* центрирование по середине блока */
     font-size: 22px;
-    color: #282828;
+    font-weight: bold;  /* жирный текст */
+    color: #244652;     /* цвет */
+    text-transform: uppercase; /* большие буквы */
+    white-space: nowrap; /* чтобы не переносилось */
 }
 
 /* Статусы */
@@ -157,6 +177,7 @@ body {
 }
 
 /* restart */
+
 
 
 
