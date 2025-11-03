@@ -62,36 +62,47 @@ body {
 /* === Контейнер каждого статуса === */
 .stat {
     position: absolute;
-    display: flex;
-    align-items: center;      /* иконка и бар по центру по вертикали */
-    gap: 6px;                 /* отступ между иконкой и баром */
-    width: 230px;             /* общая ширина блока */
-    height: 32px;
+    width: 230px;
+    height: 32px; /* общая высота блока */
     z-index: 2;
 }
 
-/* === Точные позиции для каждой пары === */
-#hunger-stat { top: 100px; left: 16px; }
-#happiness-stat { top: 120px; left: 16px; }
-#energy-stat { top: 140px; left: 16px; }
-#cleanliness-stat { top: 160px; left: 16px; }
-
-/* === Иконки === */
+/* === Общая структура иконка + бар === */
 .stat .icon {
-    width: 24px;
-    height: 24px;
+    position: absolute;
+    top: 50%;              /* центрируем иконку вертикально */
+    left: 0;               /* иконка прижата к левому краю */
+    transform: translateY(-50%);
     object-fit: contain;
 }
 
-/* Индивидуальная подгонка, если размеры визуально отличаются */
-#hunger-stat .icon { width: 29px; height: 24px; }
-#happiness-stat .icon { width: 39px; height: 43px; }
-#energy-stat .icon { width: 31px; height: 22px; }
-#cleanliness-stat .icon { width: 30px; height: 28px; }
+/* === Индивидуальные размеры иконок (точные) === */
+#hunger-stat .icon {
+    width: 29px;
+    height: 24px;
+}
 
-/* === Серый бар (пустой) === */
+#happiness-stat .icon {
+    width: 39px;
+    height: 43px;
+    top: 52%; /* чуть ниже для визуального выравнивания */
+}
+
+#energy-stat .icon {
+    width: 31px;
+    height: 22px;
+}
+
+#cleanliness-stat .icon {
+    width: 30px;
+    height: 28px;
+}
+
+/* === Бар (серый фон) — фиксированное положение для всех === */
 .bar-empty {
-    position: relative;
+    position: absolute;
+    top: 8px;                /* чтобы визуально бар был по центру */
+    left: 45px;              /* одинаковый отступ для всех */
     width: 190px;
     height: 16px;
     background: url('assets/ui/bar_empty.png') no-repeat center;
@@ -115,6 +126,12 @@ body {
     transition: transform 0.3s ease;
 }
 
+/* === Точные вертикальные позиции (скорректированные) === */
+#hunger-stat { top: 100px; left: 10px; }
+#happiness-stat { top: 120px; left: 10px; }
+#energy-stat { top: 140px; left: 10px; }
+#cleanliness-stat { top: 160px; left: 10px; }
+
 /* === Кнопки === */
 #buttons img {
     position: absolute;
@@ -129,4 +146,5 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
+
 
