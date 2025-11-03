@@ -59,36 +59,38 @@ body {
     white-space: nowrap;
 }
 
-/* Статусы */
+/* Контейнер каждого статуса */
 .stat {
     position: absolute;
-    width: 200px;
-    height: 40px;  /* уменьшили высоту */
+    width: 230px;   /* ширина блока под иконку + бар */
+    height: 32px;   /* достаточно для иконки и полоски */
     z-index: 2;
 }
 
-/* Иконки */
+/* Иконка */
 .stat .icon {
     position: absolute;
-    top: 0;   /* иконка в верхней части блока */
+    top: 4px;     /* центрирует иконку */
     left: 0;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
 }
 
-/* Пустой бар */
+/* Серый бар (пустой) */
 .bar-empty {
     position: absolute;
-    top: 22px;  /* полоска чуть ниже иконки */
-    left: 28px;
-    width: 200px;
-    height: 14px;
+    top: 9px;         /* немного ниже центра иконки */
+    left: 32px;       /* отступ от иконки */
+    width: 190px;
+    height: 14px;     /* точная высота изображения bar_empty.png */
     background-image: url('assets/ui/bar_empty.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    overflow: hidden; /* чтобы ничего не вылезало */
+    border-radius: 4px;
 }
 
-/* Заполненный бар */
+/* Заполненная часть */
 .bar-fill {
     position: absolute;
     top: 0;
@@ -97,14 +99,16 @@ body {
     height: 100%;
     background-image: url('assets/ui/bar_fill.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    transition: width 0.3s linear;
 }
 
-/* Позиции блоков — плотно друг к другу */
-#hunger-stat { top: 92px; left: 5px; }
-#happiness-stat { top: 142px; left: 1px; }
-#energy-stat { top: 192px; left: 4px; }
-#cleanliness-stat { top: 242px; left: 4px; }
+/* Точные вертикальные позиции со сжатыми отступами */
+#hunger-stat { top: 100px; left: 10px; }
+#happiness-stat { top: 137px; left: 10px; }   /* +37 px */
+#energy-stat { top: 174px; left: 10px; }      /* +37 px */
+#cleanliness-stat { top: 211px; left: 10px; } /* +37 px */
+
 
 
 /* Кнопки */
@@ -121,6 +125,7 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
+
 
 
 
