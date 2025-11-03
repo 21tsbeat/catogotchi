@@ -1,5 +1,6 @@
 const cat = document.getElementById("cat");
 const bgMusic = document.getElementById("bg-music");
+const petNameEl = document.getElementById("pet-name");
 
 // Статы
 const stats = {
@@ -32,18 +33,23 @@ let actionTarget = null;
 let actionInProgress = false;
 const actionSpeed = 0.5;
 
+// Ввод имени
+let editingName = false;
+
+// Включение/выключение музыки
+let musicPlaying = true;
+
 // Функция действий
 function doAction(action) {
     if (!["feed","play","sleep","clear"].includes(action)) return;
 
-    currentAction = action;  // смена картинки кота
+    currentAction = action;  
     cat.src = `assets/cat/cat_${action}.png`;
     actionTarget = action === "feed" ? "hunger" :
                    action === "play" ? "happiness" :
                    action === "sleep" ? "energy" : "cleanliness";
     actionInProgress = true;
 
-    // Остановка предыдущего звука
     if (currentSound) {
         currentSound.pause();
         currentSound.currentTime = 0;
@@ -51,6 +57,24 @@ function doAction(action) {
     currentSound = actionSounds[action];
     currentSound.loop = true;
     currentSound.play();
+}
+
+// Редактирование имени
+function editName() {
+    editingName = true;
+    const newName = prompt("Введите имя питомца:", petNameEl.textContent);
+    if (newName) petNameEl.textContent = newName.toUpperCase();
+    editingName = false;
+}
+
+// Включение/выключение музыки
+function toggleMusic() {
+    musicPlaying = !musicPlaying;
+    if (musicPlaying) {
+        bgMusic.play();
+    } else {
+        bgMusic.pause();
+    }
 }
 
 // Сброс игры
