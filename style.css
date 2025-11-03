@@ -1,11 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    background: #000;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* центр по горизонтали */
+    align-items: center;     /* центр по вертикали */
     height: 100vh;
+    background: #000;
 }
 
 #background-img {
@@ -163,6 +163,7 @@ body {
 }
 
 /* restart */
+
 
 
 
