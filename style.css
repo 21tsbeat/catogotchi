@@ -8,6 +8,14 @@ body {
     background: #000;
 }
 
+#game-container {
+    width: 390px;
+    height: 844px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Фон */
 #background-img {
     position: absolute;
     top: 0;
@@ -18,18 +26,12 @@ body {
     z-index: 0;
 }
 
-#cat, #name-bar, .stat, #buttons {
-    z-index: 1; /* выше фона */
-}
-
 /* Кот */
 #cat {
     position: absolute;
     top: 174px;
     left: -17px;
-    width: auto;
-    height: auto;
-    z-index: 2;
+    z-index: 1;
 }
 
 /* Имя питомца */
@@ -37,28 +39,24 @@ body {
     position: absolute;
     top: 575px;
     left: 95px;
-    width: 200px;  /* ширина name_bar */
-    height: 40px;  /* высота name_bar */
-    z-index: 3;
+    width: 200px;
+    height: 40px;
+    z-index: 2;
 }
-
 #name-bar img {
     width: 100%;
     height: 100%;
-    display: block;
 }
-
-/* Имя питомца по центру */
 #pet-name {
     position: absolute;
-    top: 50%;           /* центр по вертикали */
-    left: 50%;          /* центр по горизонтали */
-    transform: translate(-50%, -50%); /* центрирование по середине блока */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 22px;
-    font-weight: bold;  /* жирный текст */
-    color: #244652;     /* цвет */
-    text-transform: uppercase; /* большие буквы */
-    white-space: nowrap; /* чтобы не переносилось */
+    font-weight: bold;
+    color: #244652;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 /* Статусы */
@@ -66,62 +64,44 @@ body {
     position: absolute;
     width: 200px;
     height: 50px;
-    /* достаточно для иконки + полоски */
-    z-index: 3;
+    z-index: 2;
 }
 
-/* Иконки */
 .stat .icon {
     position: absolute;
-    top: 0px;
-    /* иконка сверху блока */
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 30px;
     height: 30px;
 }
 
-/* Пустой бар */
 .bar-empty {
     position: absolute;
-    top: 6px;
-    /* чуть ниже иконки */
+    top: 35px;
     left: 28px;
-    /* отступ от иконки */
     width: 200px;
-    height: 10px;
-    background: url('assets/ui/bar_empty.png') no-repeat;
+    height: 14px;
+    background-image: url('assets/ui/bar_empty.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-/* Заполненный бар */
 .bar-fill {
     position: absolute;
     top: 0;
     left: 0;
     width: 0%;
-    height: 10px;
-    background: url('assets/ui/bar_fill.png') no-repeat;
+    height: 100%;
+    background-image: url('assets/ui/bar_fill.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Позиции блоков статов */
-#hunger-stat {
-    top: 92px;
-    left: 5px;
-}
-
-#happiness-stat {
-    top: 43px;
-    left: 1px;
-}
-
-#energy-stat {
-    top: 123px;
-    left: 4px;
-}
-
-#cleanliness-stat {
-    top: 73px;
-    left: 4px;
-}
+#hunger-stat { top: 92px; left: 5px; }
+#happiness-stat { top: 143px; left: 1px; }
+#energy-stat { top: 194px; left: 4px; }
+#cleanliness-stat { top: 245px; left: 4px; }
 
 /* Кнопки */
 #buttons img {
@@ -129,51 +109,11 @@ body {
     width: 150px;
     height: auto;
     cursor: pointer;
+    z-index: 2;
 }
-
-#buttons img:nth-child(1) {
-    top: 632px;
-    left: 23px;
-}
-
-/* feed */
-#buttons img:nth-child(2) {
-    top: 632px;
-    left: 201px;
-}
-
-/* play */
-#buttons img:nth-child(3) {
-    top: 694px;
-    left: 23px;
-}
-
-/* sleep */
-#buttons img:nth-child(4) {
-    top: 754px;
-    left: 23px;
-}
-
-/* clear */
-#buttons img:nth-child(5) {
-    top: 694px;
-    left: 201px;
-}
-
-/* name */
-#buttons img:nth-child(6) {
-    top: 754px;
-    left: 201px;
-}
-
-/* restart */
-
-
-
-
-
-
-
-
-
-
+#buttons img:nth-child(1) { top: 632px; left: 23px; }  /* feed */
+#buttons img:nth-child(2) { top: 632px; left: 201px; } /* play */
+#buttons img:nth-child(3) { top: 694px; left: 23px; }  /* sleep */
+#buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
+#buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
+#buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
