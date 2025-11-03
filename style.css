@@ -77,8 +77,12 @@ body {
     left: 28px;
     /* отступ от иконки */
     width: 200px;
-    height: 10px;
-    background: url('assets/ui/bar_empty.png') no-repeat;
+    height: 12px;
+    /* точная высота под изображение */
+    background-image: url('assets/ui/bar_empty.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* растягиваем изображение под блок */
 }
 
 /* Заполненный бар */
@@ -87,8 +91,12 @@ body {
     top: 0;
     left: 0;
     width: 0%;
-    height: 10px;
-    background: url('assets/ui/bar_fill.png') no-repeat;
+    height: 100%;
+    /* совпадает с .bar-empty */
+    background-image: url('assets/ui/bar_fill.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* растягиваем по блоку */
 }
 
 /* Позиции блоков статов */
