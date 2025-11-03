@@ -8,13 +8,14 @@ body {
     height: 100vh;
 }
 
-#game-container {
+#background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 390px;
     height: 844px;
-    position: relative;
-    overflow: hidden;
-    background: url('assets/ui/background.png') no-repeat;
-    background-size: 100% 100%; /* растянуть фон точно под контейнер */
+    object-fit: fill; /* растянуть картинку без обрезки */
+    z-index: 1;
 }
 
 /* Кот */
@@ -162,6 +163,7 @@ body {
 }
 
 /* restart */
+
 
 
 
