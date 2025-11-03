@@ -56,7 +56,7 @@ body {
     position: absolute;
     width: 200px;
     height: 50px;
-    /* достаточно для иконки + баров */
+    /* достаточно для иконки + полоски */
     z-index: 3;
 }
 
@@ -64,6 +64,7 @@ body {
 .stat .icon {
     position: absolute;
     top: 0px;
+    /* иконка сверху блока */
     left: 0px;
     width: 30px;
     height: 30px;
@@ -72,17 +73,13 @@ body {
 /* Пустой бар */
 .bar-empty {
     position: absolute;
-    top: 35px;
-    /* ниже иконки */
+    top: 6px;
+    /* чуть ниже иконки */
     left: 28px;
     /* отступ от иконки */
     width: 200px;
-    height: 12px;
-    /* точная высота под изображение */
-    background-image: url('assets/ui/bar_empty.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* растягиваем изображение под блок */
+    height: 10px;
+    background: url('assets/ui/bar_empty.png') no-repeat;
 }
 
 /* Заполненный бар */
@@ -91,12 +88,8 @@ body {
     top: 0;
     left: 0;
     width: 0%;
-    height: 100%;
-    /* совпадает с .bar-empty */
-    background-image: url('assets/ui/bar_fill.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* растягиваем по блоку */
+    height: 10px;
+    background: url('assets/ui/bar_fill.png') no-repeat;
 }
 
 /* Позиции блоков статов */
@@ -106,17 +99,17 @@ body {
 }
 
 #happiness-stat {
-    top: 143px;
+    top: 43px;
     left: 1px;
 }
 
 #energy-stat {
-    top: 194px;
+    top: 123px;
     left: 4px;
 }
 
 #cleanliness-stat {
-    top: 245px;
+    top: 73px;
     left: 4px;
 }
 
