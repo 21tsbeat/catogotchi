@@ -1,99 +1,100 @@
-// === Переменные ===
+const cat = document.getElementById("cat");
+const bgMusic = document.getElementById("bg-music");
+
+// Статы
 const stats = {
     hunger: 70,
     happiness: 80,
     energy: 60,
-    cleanliness: 90,
+    cleanliness: 90
 };
 
-const decaySpeeds = {
-    hunger: 0.03,
-    happiness: 0.02,
-    energy: 0.015,
-    cleanliness: 0.025,
-};
-
-let actionInProgress = false;
-let actionTarget = null;
-let actionSpeed = 0.5;
-let actionSound = null;
-
-// === Элементы ===
+// Бары
 const statBars = {
-    hunger: document.querySelector("#hunger-stat .bar-fill"),
-    happiness: document.querySelector("#happiness-stat .bar-fill"),
-    energy: document.querySelector("#energy-stat .bar-fill"),
-    cleanliness: document.querySelector("#cleanliness-stat .bar-fill"),
+    hunger: document.getElementById("hunger-fill"),
+    happiness: document.getElementById("happiness-fill"),
+    energy: document.getElementById("energy-fill"),
+    cleanliness: document.getElementById("cleanliness-fill")
 };
 
-// === Звуки ===
+// Звуки действий
 const actionSounds = {
     feed: new Audio("assets/sounds/cat_feed.mp3"),
     play: new Audio("assets/sounds/cat_play.mp3"),
     sleep: new Audio("assets/sounds/cat_sleep.mp3"),
-    clear: new Audio("assets/sounds/cat_clear.mp3"),
+    clear: new Audio("assets/sounds/cat_clear.mp3")
 };
+let currentSound = null;
 
-// === Обработчики кнопок ===
-document.querySelectorAll("#buttons img").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const action = btn.dataset.action; // укажи data-action="feed" и т.д.
+// Состояние кота
+let currentAction = "idle";
+let actionTarget = null;
+let actionInProgress = false;
+const actionSpeed = 0.5;
 
-        if (["feed","play","sleep","clear"].includes(action)) {
-            actionInProgress = true;
-            actionTarget = action === "feed" ? "hunger" :
-                           action === "play" ? "happiness" :
-                           action === "sleep" ? "energy" : "cleanliness";
+// Функция действий
+function doAction(action) {
+    if (!["feed","play","sleep","clear"].includes(action)) return;
 
-            // стоп предыдущего звука
-            if (actionSound) {
-                actionSound.pause();
-                actionSound.currentTime = 0;
-            }
+    currentAction = action;  // смена картинки кота
+    cat.src = `assets/cat/cat_${action}.png`;
+    actionTarget = action === "feed" ? "hunger" :
+                   action === "play" ? "happiness" :
+                   action === "sleep" ? "energy" : "cleanliness";
+    actionInProgress = true;
 
-            actionSound = actionSounds[action];
-            actionSound.loop = true;
-            actionSound.play();
-        } 
-        else if (action === "restart") {
-            for (let key in stats) stats[key] = 100;
-        }
-    });
-});
+    // Остановка предыдущего звука
+    if (currentSound) {
+        currentSound.pause();
+        currentSound.currentTime = 0;
+    }
+    currentSound = actionSounds[action];
+    currentSound.loop = true;
+    currentSound.play();
+}
 
-// === Основной цикл обновления ===
+// Сброс игры
+function restart() {
+    for (let key in stats) stats[key] = 100;
+    updateBars();
+    currentAction = "idle";
+    cat.src = "assets/cat/cat_idle.png";
+}
+
+// Цикл обновления статов
 function updateStats() {
     for (let key in stats) {
-        // если действие идет по другому бару — уменьшаем остальные
         if (!actionInProgress || key !== actionTarget) {
-            stats[key] -= decaySpeeds[key];
+            stats[key] -= 0.02; // decay
             if (stats[key] < 0) stats[key] = 0;
         }
     }
 
-    // действие: заполнение бара
     if (actionInProgress && actionTarget) {
         stats[actionTarget] += actionSpeed;
         if (stats[actionTarget] >= 100) {
             stats[actionTarget] = 100;
             actionInProgress = false;
-            actionTarget = null;
-
-            if (actionSound) {
-                actionSound.pause();
-                actionSound.currentTime = 0;
-                actionSound = null;
+            currentAction = "idle";
+            cat.src = "assets/cat/cat_idle.png";
+            if (currentSound) {
+                currentSound.pause();
+                currentSound.currentTime = 0;
+                currentSound = null;
             }
         }
     }
 
-    // обновление визуала
-    for (let key in statBars) {
-        statBars[key].style.setProperty("--fill", stats[key]);
-    }
-
+    updateBars();
     requestAnimationFrame(updateStats);
 }
 
-// запуск
+// Обновление визуала баров
+function updateBars() {
+    for (let key in statBars) {
+        statBars[key].style.setProperty("--fill", stats[key]);
+    }
+}
+
+// Запуск цикла
 requestAnimationFrame(updateStats);
