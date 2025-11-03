@@ -1,104 +1,99 @@
-let stats = {
+// === Переменные ===
+const stats = {
     hunger: 70,
     happiness: 80,
     energy: 60,
-    cleanliness: 90
+    cleanliness: 90,
 };
 
-let petName = "Мурчик";
+const decaySpeeds = {
+    hunger: 0.03,
+    happiness: 0.02,
+    energy: 0.015,
+    cleanliness: 0.025,
+};
+
 let actionInProgress = false;
 let actionTarget = null;
 let actionSpeed = 0.5;
-
-const cat = document.getElementById("cat");
-const bgMusic = document.getElementById("bg-music");
-let musicStarted = false;
 let actionSound = null;
 
-// Включение музыки после первого клика
-document.getElementById("game-container").addEventListener("click", () => {
-    if (!musicStarted) {
-        bgMusic.volume = 0.5;
-        bgMusic.play();
-        musicStarted = true;
-    }
+// === Элементы ===
+const statBars = {
+    hunger: document.querySelector("#hunger-stat .bar-fill"),
+    happiness: document.querySelector("#happiness-stat .bar-fill"),
+    energy: document.querySelector("#energy-stat .bar-fill"),
+    cleanliness: document.querySelector("#cleanliness-stat .bar-fill"),
+};
+
+// === Звуки ===
+const actionSounds = {
+    feed: new Audio("assets/sounds/cat_feed.mp3"),
+    play: new Audio("assets/sounds/cat_play.mp3"),
+    sleep: new Audio("assets/sounds/cat_sleep.mp3"),
+    clear: new Audio("assets/sounds/cat_clear.mp3"),
+};
+
+// === Обработчики кнопок ===
+document.querySelectorAll("#buttons img").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const action = btn.dataset.action; // укажи data-action="feed" и т.д.
+
+        if (["feed","play","sleep","clear"].includes(action)) {
+            actionInProgress = true;
+            actionTarget = action === "feed" ? "hunger" :
+                           action === "play" ? "happiness" :
+                           action === "sleep" ? "energy" : "cleanliness";
+
+            // стоп предыдущего звука
+            if (actionSound) {
+                actionSound.pause();
+                actionSound.currentTime = 0;
+            }
+
+            actionSound = actionSounds[action];
+            actionSound.loop = true;
+            actionSound.play();
+        } 
+        else if (action === "restart") {
+            for (let key in stats) stats[key] = 100;
+        }
+    });
 });
 
-// Обновление статов на экране
+// === Основной цикл обновления ===
 function updateStats() {
-    document.getElementById("hunger-fill").style.width = stats.hunger + "%";
-    document.getElementById("happiness-fill").style.width = stats.happiness + "%";
-    document.getElementById("energy-fill").style.width = stats.energy + "%";
-    document.getElementById("cleanliness-fill").style.width = stats.cleanliness + "%";
-}
-
-// Действия с котом
-function doAction(action) {
-    if(actionInProgress) return;
-
-    actionInProgress = true;
-    actionTarget = {
-        feed: "hunger",
-        play: "happiness",
-        sleep: "energy",
-        clear: "cleanliness"
-    }[action];
-
-    cat.src = `assets/cat/cat_${action}.png`;
-
-    // Остановка предыдущего звука действия
-    if(actionSound) {
-        actionSound.pause();
-        actionSound.currentTime = 0;
+    for (let key in stats) {
+        // если действие идет по другому бару — уменьшаем остальные
+        if (!actionInProgress || key !== actionTarget) {
+            stats[key] -= decaySpeeds[key];
+            if (stats[key] < 0) stats[key] = 0;
+        }
     }
 
-    actionSound = new Audio(`assets/sounds/cat_${action}.mp3`);
-    actionSound.volume = 0.7;
-    actionSound.loop = true;
-    actionSound.play();
-
-    let interval = setInterval(() => {
+    // действие: заполнение бара
+    if (actionInProgress && actionTarget) {
         stats[actionTarget] += actionSpeed;
-        if(stats[actionTarget] >= 100) {
+        if (stats[actionTarget] >= 100) {
             stats[actionTarget] = 100;
             actionInProgress = false;
-            cat.src = "assets/cat/cat_idle.png";
+            actionTarget = null;
 
-            if(actionSound) {
+            if (actionSound) {
                 actionSound.pause();
                 actionSound.currentTime = 0;
                 actionSound = null;
             }
-
-            clearInterval(interval);
         }
-        updateStats();
-    }, 50);
-}
-
-// Редактирование имени питомца
-function editName() {
-    let newName = prompt("Введите имя питомца:", petName);
-    if(newName) petName = newName.substring(0,12);
-    document.getElementById("pet-name").textContent = petName;
-}
-
-// Перезапуск игры
-function restart() {
-    for(let key in stats) stats[key] = 100;
-    updateStats();
-}
-
-// Постепенное уменьшение статов
-setInterval(() => {
-    if(!actionInProgress) {
-        stats.hunger = Math.max(stats.hunger - 0.03, 0);
-        stats.happiness = Math.max(stats.happiness - 0.02, 0);
-        stats.energy = Math.max(stats.energy - 0.015, 0);
-        stats.cleanliness = Math.max(stats.cleanliness - 0.025, 0);
-        updateStats();
     }
-}, 1000);
 
-// Начальное обновление
-updateStats();
+    // обновление визуала
+    for (let key in statBars) {
+        statBars[key].style.setProperty("--fill", stats[key]);
+    }
+
+    requestAnimationFrame(updateStats);
+}
+
+// запуск
+requestAnimationFrame(updateStats);
