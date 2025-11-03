@@ -71,10 +71,10 @@ body {
 }
 
 /* === Точные позиции для каждой пары === */
-#hunger-stat { top: 100px; left: 10px; }
-#happiness-stat { top: 120px; left: 10px; }
-#energy-stat { top: 140px; left: 10px; }
-#cleanliness-stat { top: 160px; left: 10px; }
+#hunger-stat { top: 100px; left: 16px; }
+#happiness-stat { top: 120px; left: 16px; }
+#energy-stat { top: 140px; left: 16px; }
+#cleanliness-stat { top: 160px; left: 16px; }
 
 /* === Иконки === */
 .stat .icon {
@@ -129,3 +129,4 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
+
