@@ -96,12 +96,13 @@ body {
     width: 100%;
     height: 100%;
     background: url('assets/ui/bar_fill.png') no-repeat center;
-    background-size: cover; /* теперь совпадает точно */
+    background-size: cover;
     border-radius: 6px;
     transform-origin: left center;
-    transform: scaleX(var(--fill, 0.5)); /* ширина регулируется */
+    transform: scaleX(calc(var(--fill, 100) / 100)); /* теперь 100 = полный бар */
     transition: transform 0.3s ease;
 }
+
 
 /* Точные вертикальные позиции со сжатыми отступами */
 #hunger-stat { top: 100px; left: 10px; }
@@ -125,6 +126,7 @@ body {
 #buttons img:nth-child(4) { top: 754px; left: 23px; }  /* clear */
 #buttons img:nth-child(5) { top: 694px; left: 201px; } /* name */
 #buttons img:nth-child(6) { top: 754px; left: 201px; } /* restart */
+
 
 
 
